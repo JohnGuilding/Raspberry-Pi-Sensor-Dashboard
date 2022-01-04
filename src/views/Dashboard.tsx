@@ -10,8 +10,7 @@ const Dashboard = () => {
     }, []);
 
     const getData = async () => {
-        // const url = 'https://raspberry-pi-sensor-api.azurewebsites.net/temperature'
-        const url = 'https://localhost:7009/temperature'
+        const url = 'https://raspberry-pi-sensor-api.azurewebsites.net/temperature'
         await axios.get(url)
         .then((response) => {
             setTemperatureData(response.data);
