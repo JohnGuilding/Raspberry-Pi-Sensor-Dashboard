@@ -1,6 +1,6 @@
 import React from 'react';
 import { ResponsiveLine } from "@nivo/line"
-import data from './data.json';
+import data from './data';
 
 // import ITemperatureReadings from "../models/ITemperatureReadings";
 
