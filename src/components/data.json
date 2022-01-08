@@ -1,0 +1,30 @@
+[
+    {
+        "id": "TemperatureC",
+        "color": "hsl(99, 70%, 50%)",
+        "data": [
+            {
+            "x": "yesterday",
+            "y": 30
+            },
+            {
+            "x": "today",
+            "y": 28
+            }
+        ]
+        },
+        {
+        "id": "TemperatureF",
+        "color": "hsl(345, 70%, 50%)",
+        "data": [
+            {
+            "x": "yesterday",
+            "y": 90
+            },
+            {
+            "x": "today",
+            "y": 84
+            }
+        ]
+        }
+]
