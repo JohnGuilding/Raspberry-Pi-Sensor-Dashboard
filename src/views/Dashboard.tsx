@@ -13,10 +13,6 @@ const Dashboard = () => {
         getData();
     }, []);
 
-    const logToConsole = () => {
-        console.log(temperatureData);
-    }   
-
     const getData = async () => {
         // const url = 'https://raspberry-pi-sensor-api.azurewebsites.net/temperature'
         const url = "https://localhost:7009/temperature";
@@ -67,7 +63,6 @@ const Dashboard = () => {
     return (
         <>
             <Header />
-            <button onClick={logToConsole}>Log data to console</button>
             {temperatureData.length ? (
             <>
                 <h2>data:</h2>
