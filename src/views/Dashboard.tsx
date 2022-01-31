@@ -14,16 +14,14 @@ const Dashboard = () => {
     }, []);
 
     const getData = async () => {
-        const url = 'https://raspberry-pi-sensor-api.azurewebsites.net/temperature'
-        // const url = "https://localhost:7009/temperature";
-        await axios.get(url)
-        .then((response) => {
-            setTemperatureData(response.data);
-        })
-        .catch(error => {
-            console.log(error);
-        })
-    }
+        const url = "https://raspberry-pi-sensor-api.azurewebsites.net/temperature";
+        try {
+            const result = await axios.get(url);
+            setTemperatureData(result.data);
+        } catch (e) {
+            console.log("error", e);
+        }
+    };
 
     let dataArray: IMappedReading[] = [];
     let array: IFinalMappedReadingArray[] = [];
@@ -31,15 +29,18 @@ const Dashboard = () => {
     const mapIndividualReadings = () => {
         if (temperatureData.length >= 1) {
             temperatureData.forEach((reading: ITemperatureReading) => {
+                try {
                 const mappedReading = {
                     x: reading.readingDate.toString(),
                     y: reading.temperatureC,
                 };
                 dataArray.push(mappedReading);
+                } catch (e) {
+                console.log("There was an error mapping your reading", e);
+                }
             });
         }
-        
-    }
+        };
 
     const mapAllReadings = () => {
         let celciusReadings = {
@@ -55,10 +56,11 @@ const Dashboard = () => {
         array.push(celciusReadings, fahrenheitReadings);
     };
 
-    if (temperatureData.length) {
+    if (temperatureData.length > 1) {
         mapIndividualReadings();
         mapAllReadings();
     }
+        
     
     return (
         <>
