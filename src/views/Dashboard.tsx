@@ -30,7 +30,7 @@ const Dashboard = () => {
 
     const mapIndividualReadings = () => {
         if (temperatureData.length >= 1) {
-            temperatureData.map((reading: ITemperatureReading) => {
+            temperatureData.forEach((reading: ITemperatureReading) => {
                 const mappedReading = {
                     x: reading.readingDate.toString(),
                     y: reading.temperatureC,
