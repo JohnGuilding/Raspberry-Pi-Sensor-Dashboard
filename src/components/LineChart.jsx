@@ -1,14 +1,6 @@
 import React from 'react';
 import { ResponsiveLine } from "@nivo/line"
 
-// import ITemperatureReadings from "../models/ITemperatureReadings";
-
-// interface ILineChartProps {
-//  data: JSON
-// }
-
-// : React.FC<ILineChartProps>
-
 const LineChart = ({ data }) => (
     <ResponsiveLine 
         data={data}

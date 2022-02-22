@@ -4,10 +4,12 @@ import LineChart from "../components/LineChart";
 import ITemperatureReading from "../interfaces/ITemperatureReading";
 import Header from './../components/Header';
 import IMappedReading from "../interfaces/IMappedReading";
-import IFinalMappedReadingArray from "../interfaces/IFinalMappedReadingArray";
+import IFormattedChartData from "../interfaces/IFormattedChartData";
 
 const Dashboard = () => {
     const [temperatureData, setTemperatureData] = useState([]);
+    let mappedReadings: IMappedReading[] = [];
+    let formattedChartData: IFormattedChartData[] = [];
 
     useEffect(() => {
         getData();
@@ -23,9 +25,6 @@ const Dashboard = () => {
         }
     };
 
-    let dataArray: IMappedReading[] = [];
-    let array: IFinalMappedReadingArray[] = [];
-
     const mapIndividualReadings = () => {
         if (temperatureData.length >= 1) {
             temperatureData.forEach((reading: ITemperatureReading) => {
@@ -34,33 +33,32 @@ const Dashboard = () => {
                     x: reading.readingDate.toString(),
                     y: reading.temperatureC,
                 };
-                dataArray.push(mappedReading);
+                mappedReadings.push(mappedReading);
                 } catch (e) {
                 console.log("There was an error mapping your reading", e);
                 }
             });
         }
-        };
+    };
 
     const mapAllReadings = () => {
         let celciusReadings = {
             id: "TemperatureC",
             color: "hsl(99, 70%, 50%)",
-            data: dataArray,
+            data: mappedReadings,
         };
         let fahrenheitReadings = {
             id: "TemperatureF",
             color: "hsl(345, 70%, 50%)",
-            data: dataArray,
+            data: mappedReadings,
         };
-        array.push(celciusReadings, fahrenheitReadings);
+        formattedChartData.push(celciusReadings, fahrenheitReadings);
     };
 
     if (temperatureData.length > 1) {
         mapIndividualReadings();
         mapAllReadings();
-    }
-        
+    } 
     
     return (
         <>
@@ -76,9 +74,9 @@ const Dashboard = () => {
             <p>data:</p>
             )}
             
-            {array.length >= 1 && (
+            {formattedChartData.length >= 1 && (
                 <div className="line-chart">
-                    <LineChart data={array}/>
+                    <LineChart data={formattedChartData}/>
                 </div>
             )}
         </>
