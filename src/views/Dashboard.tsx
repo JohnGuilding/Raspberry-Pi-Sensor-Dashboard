@@ -30,7 +30,7 @@ const Dashboard = () => {
             temperatureData.forEach((reading: ITemperatureReading) => {
                 try {
                 const mappedReading = {
-                    x: reading.readingDate.toString(),
+                    x: new Date(reading.readingDate).toLocaleString(),
                     y: reading.temperatureC,
                 };
                 mappedReadings.push(mappedReading);
@@ -63,18 +63,7 @@ const Dashboard = () => {
     return (
         <>
             <Header />
-            {temperatureData.length ? (
-            <>
-                <h2>data:</h2>
-                {temperatureData.map((item: ITemperatureReading, index) => (
-                <h3 key={index}>{item?.readingDate}</h3>
-                ))}
-            </>
-            ) : (
-            <p>data:</p>
-            )}
-            
-            {formattedChartData.length >= 1 && (
+            {formattedChartData.length && (
                 <div className="line-chart">
                     <LineChart data={formattedChartData}/>
                 </div>
