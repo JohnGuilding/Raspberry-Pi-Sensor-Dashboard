@@ -55,6 +55,31 @@ const Dashboard = () => {
         formattedChartData.push(celciusReadings, fahrenheitReadings);
     };
 
+    // const data = [
+    //     {
+    //         id: "TemperatureC",
+    //         color: "hsl(99, 70%, 50%)",
+    //         data: [
+    //         { x: "12/29/2021, 4:37:04 PM", y: 17 },
+    //         { x: "12/29/2021, 4:40:51 PM", y: 25 },
+    //         { x: "2/11/2022, 5:16:22 PM", y: 13 },
+    //         { x: "2/18/2022, 3:46:31 PM", y: 21 },
+    //         { x: "2/18/2022, 5:08:00 PM", y: 23 },
+    //         ],
+    //     },
+    //     {
+    //         id: "TemperatureF",
+    //         color: "hsl(345, 70%, 50%)",
+    //         data: [
+    //         { x: "12/29/2021, 4:37:04 PM", y: 17 },
+    //         { x: "12/29/2021, 4:40:51 PM", y: 25 },
+    //         { x: "2/11/2022, 5:16:22 PM", y: 13 },
+    //         { x: "2/18/2022, 3:46:31 PM", y: 21 },
+    //         { x: "2/18/2022, 5:08:00 PM", y: 23 },
+    //         ],
+    //     },
+    // ];
+
     if (temperatureData.length > 1) {
         mapIndividualReadings();
         mapAllReadings();

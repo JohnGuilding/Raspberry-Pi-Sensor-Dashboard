@@ -1,5 +1,6 @@
 import React from 'react';
 import { ResponsiveLine } from "@nivo/line"
+import './../styles/line-chart.css';
 
 const LineChart = ({ data }) => (
     <ResponsiveLine 
